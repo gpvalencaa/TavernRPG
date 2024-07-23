@@ -2,6 +2,7 @@ package cenarios;
 import jplay.Window;
 import seres.Espadachim;
 import seres.Jogador;
+import ambienteTecnico.Controle;
 import jplay.Keyboard;
 import jplay.Scene;
 import jplay.URL;
@@ -9,20 +10,19 @@ import jplay.URL;
 public class Cenario {
 	private Window janela; 
 	private Scene cena;
-	private Jogador personagemPrincipal;
+	public Jogador personagemPrincipal;
 	private Keyboard teclado;
 	public boolean passouCenario = false;
-	//private Controle controleCen;
+	private Controle controleCen;
 	
-	public Cenario(Window janela, String enderecoscn) {
+	public Cenario(Window janela, String enderecoscn, Jogador personagemPrincipal) {
 		this.janela = janela;
 		cena = new Scene();
 		cena.loadFromFile(URL.scenario(enderecoscn));
-		personagemPrincipal = new Espadachim(60,500);
+		this.personagemPrincipal = personagemPrincipal;
 		teclado = janela.getKeyboard();
-		//controleCen = new Controle();
+		controleCen = personagemPrincipal.controle;
 		run();
-		
 		
 		}
 	
@@ -38,7 +38,8 @@ public class Cenario {
 			personagemPrincipal.confereLoja(teclado);
 			janela.update();
 			janela.delay(2);
-			if (passouCenario == true) {
+			if (controleCen.mudaCenario == true) {
+				controleCen.mudaCenario = false;
 				break;
 			}
 		}

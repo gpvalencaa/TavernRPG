@@ -13,6 +13,7 @@ public class Entidade extends Sprite {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
 	public void mover() {
 		moveX(0.3);
 		moveY(0.3);
@@ -33,9 +34,17 @@ public class Entidade extends Sprite {
         vida = vida + quantidade;
     }
 	
-	public void ataque (Entidade atacado,int quantidadePV){
+	/*public void ataque (Entidade atacado,int quantidadePV){
         atacado.alteraVida(-quantidadePV);
-    }
+    }*/
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public String getNome() {
+		return this.nome;
+	}
 }
 
 	

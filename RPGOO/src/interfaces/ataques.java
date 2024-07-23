@@ -1,11 +1,7 @@
 package interfaces;
-
-import seres.Entidade;
+import seres.Opp;
 
 public interface ataques {
-		public void ataqueNormal(Entidade atacada);
-		
-		public void ataqueEspecial(Entidade atacada);
-		
-		
+		public boolean ataqueNormal(Opp atacada);
+		public boolean ataqueEspecial(Opp atacada);
 }
