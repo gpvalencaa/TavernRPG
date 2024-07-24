@@ -24,7 +24,7 @@ public class Main {
 	//static Jogador personagemPrincipal;
 	public static void main(String[] args) {
 	
-	Window janela = new Window(800,600);
+	Window janela = new Window(800, 600); //800, 600
 	GameImage plano = new GameImage("src/recursos/menutestetavern.png");
 	Keyboard teclado = janela.getKeyboard();
 	Jogador personagemPrincipal;

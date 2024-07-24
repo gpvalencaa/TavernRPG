@@ -9,9 +9,9 @@ public class Arqueiro extends Jogador{
 		super(x, y, "tentativasprite3.png");
 		alteraMoedas(7000);
 		setVida(100);
-		setPontosPoder(100);
+		setPontosPoder(200);
 		super.setDanoNormal(15);
-		super.setDanoEspecial(40);
+		super.setDanoEspecial(45);
 		super.setPrecoAtaqueNormal(15);
 		super.setPrecoAtaqueEspecial(30);
 		super.setNome("Arqueiro");

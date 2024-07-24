@@ -9,11 +9,11 @@ public class Mago extends Jogador{
 		super(x, y, "tentativasprite3.png");
 		this.alteraMoedas(7000);
 		super.setVida(100);
-		super.setPontosPoder(300);
+		super.setPontosPoder(600);
 		super.setDanoNormal(50);
-		super.setDanoEspecial(70);
+		super.setDanoEspecial(80);
 		super.setPrecoAtaqueNormal(100);
-		super.setPrecoAtaqueEspecial(100);
+		super.setPrecoAtaqueEspecial(150);
 		super.setNome("Mago");
 	}
 	

@@ -7,14 +7,15 @@ import exceptions.PontosPoderInsuficientesException;
 public class Espadachim extends Jogador{
 	public Espadachim(int x, int y) {
 		super(x, y, "tentativasprite3.png");
-		this.alteraMoedas(300);
+		this.alteraMoedas(7000);
 		this.setVida(100);
 		this.setPontosPoder(200);
-		super.setDanoNormal(20);
+		super.setDanoNormal(30);
 		super.setDanoEspecial(50);
 		super.setPrecoAtaqueNormal(50);
 		super.setPrecoAtaqueEspecial(80);
 		super.setNome("Espadachim");
+		
 	}
 	
 	public boolean ataqueNormal(Opp atacada) {

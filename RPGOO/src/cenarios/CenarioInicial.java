@@ -12,7 +12,7 @@ public class CenarioInicial {
 	
 	public CenarioInicial(Window janela) {
 		this.janela = janela;
-		plano = new GameImage("src/recursos/tavernhistoria4.jpg");
+		plano = new GameImage("src/recursos/tavernhistoria5.jpg");
 		run();
 		}
 	

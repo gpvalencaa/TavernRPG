@@ -27,8 +27,9 @@ public abstract class Jogador extends Entidade implements ataques{
 	private double velocidade = 1;
 	private int direcao = 3;
 	private boolean movendo = false;
-	public Controle controle = new Controle(this);
-	
+	//private Keyboard confereTecla;
+	//public Controle controle = new Controle(this, confereTecla);
+	public Controle controle;
 	protected int danoNormal;
 	protected int danoEspecial;
 	protected int precoAtaqueNormal;
@@ -40,14 +41,16 @@ public abstract class Jogador extends Entidade implements ataques{
 	private int pontosPoder;
     public Nivel nivel; 
     Inventario inventario;
-	
+	 
 	
 	public Jogador(int x, int y, String spriteSheet) {
 		super(x,y,spriteSheet);
 		super.setTotalDuration(2000);
+		controle = new Controle(this);
 		inventario = new Inventario(this);
 		nivel = new Nivel();
 	}
+	
 	
 	public void progressaoPersonagem(){
             nivel.xpRewards(this);
@@ -125,7 +128,10 @@ public abstract class Jogador extends Entidade implements ataques{
     				break;
     			}
     		}
-    }
+    	 }
+    		else if(item instanceof ItemTavern) {
+    			JOptionPane.showMessageDialog(null, "Você está no reino de nora");
+    		}
     }
 
 	
@@ -172,6 +178,7 @@ public abstract class Jogador extends Entidade implements ataques{
 		} else if (teclado.keyDown(Keyboard.RIGHT_KEY)) {
 			//if(this.x < janela.getWidth()) {
 				this.x += velocidade;
+				
 			//}
 			if (direcao != 2) {
 				super.setSequence(8, 12);
@@ -282,7 +289,10 @@ public abstract class Jogador extends Entidade implements ataques{
 			
 		}
 		
+	
+		
 	}
+
 	/*public void apertouBotaoLoja(ActionEvent action, Loja loja, Item item) {
 		try {
 			loja.compraItem(this, item);
@@ -347,7 +357,7 @@ public abstract class Jogador extends Entidade implements ataques{
         buttonUsaCura.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
         	inventario.jogador.usaItem(buttonUsaCura, new ItemCura());  
-        	label.setText("<html>Moedas: " + Integer.toString(moedas) + "<br>Vida:" + Integer.toString(vida) + "<br>Pontos de Poder: " + Integer.toString(pontosPoder));
+        	label.setText("<html>Moedas: " + Integer.toString(moedas) + "<br>Vida:" + Integer.toString(vida) + "<br>Pontos de Poder: " + Integer.toString(pontosPoder)+ "<br>Nível:" + nivel.getNumeroNivel());
         	
         	//System.out.println(Jogador.getMoedas());
         }
@@ -357,7 +367,7 @@ public abstract class Jogador extends Entidade implements ataques{
         buttonUsaMaldicao.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         	inventario.jogador.usaItem(buttonUsaMaldicao, new ItemMaldicao());		
-        	label.setText("<html>Moedas: " + Integer.toString(moedas) + "<br>Vida:" + Integer.toString(vida) + "<br>Pontos de Poder: " + Integer.toString(pontosPoder));
+        	label.setText("<html>Moedas: " + Integer.toString(moedas) + "<br>Vida:" + Integer.toString(vida) + "<br>Pontos de Poder: " + Integer.toString(pontosPoder)+ "<br>Nível:" + nivel.getNumeroNivel());
 	    }
 	    });
 	    			
@@ -366,7 +376,15 @@ public abstract class Jogador extends Entidade implements ataques{
         buttonUsaElixir.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         	inventario.jogador.usaItem(buttonUsaElixir, new ItemPontosPoder());	
-        	label.setText("<html>Moedas: " + Integer.toString(moedas) + "<br>Vida:" + Integer.toString(vida) + "<br>Pontos de Poder: " + Integer.toString(pontosPoder));
+        	label.setText("<html>Moedas: " + Integer.toString(moedas) + "<br>Vida:" + Integer.toString(vida) + "<br>Pontos de Poder: " + Integer.toString(pontosPoder)+ "<br>Nível:" + nivel.getNumeroNivel());
+		}
+		});
+        
+        JButton buttonReinoDeNora = new JButton("Reino de Nora");
+        buttonReinoDeNora.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	inventario.jogador.usaItem(buttonReinoDeNora, new ItemTavern());	
+        	label.setText("<html>Moedas: " + Integer.toString(moedas) + "<br>Vida:" + Integer.toString(vida) + "<br>Pontos de Poder: " + Integer.toString(pontosPoder)+ "<br>Nível:" + nivel.getNumeroNivel());
 		}
 		});
         
@@ -377,6 +395,7 @@ public abstract class Jogador extends Entidade implements ataques{
         panel.add(buttonUsaCura);
         panel.add(buttonUsaMaldicao);
         panel.add(buttonUsaElixir);
+        panel.add(buttonReinoDeNora);
         
         
         
@@ -429,8 +448,14 @@ public abstract class Jogador extends Entidade implements ataques{
         panel.add(label);
         frame.add(panel);
         frame.setVisible(true);
+        
+        
+        
+        
 	}
-
+	
+	
+	
 	
 	
 	

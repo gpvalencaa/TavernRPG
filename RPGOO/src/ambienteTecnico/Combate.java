@@ -17,8 +17,8 @@ public class Combate {
     private JButton btnAtacar;
     private JButton btnAtaqueEspecial;
     private JFrame frame;
-    public boolean acabouBatalha;
-    public boolean perdeu = false;
+   // public boolean acabouBatalha;
+    //public boolean perdeu = false;
 
     public Combate(Jogador player, Opp adversario) {
     	try {
@@ -30,7 +30,7 @@ public class Combate {
         this.inimigo = adversario;
     	
         frame = new JFrame(inimigo.getNome());
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setSize(400, 300);
         frame.setLayout(new BorderLayout());
 
@@ -79,6 +79,7 @@ public class Combate {
     	}
         if (inimigo.getVida() <= 0) {
             JOptionPane.showMessageDialog(null, "Você venceu!");
+           // acabouBatalha = true;
             frame.dispose();
         } else {
         turnoInimigo();
@@ -95,7 +96,7 @@ public class Combate {
     	} 
     	if (inimigo.getVida() <= 0) {
             JOptionPane.showMessageDialog(null, "Você venceu!");
-            acabouBatalha = true;
+           // acabouBatalha = true;
             frame.dispose();
         } else {
         turnoInimigo();
@@ -122,9 +123,9 @@ public class Combate {
         lblStatusInimigo.setText("Saúde do " + inimigo.getNome()  + ": "+ inimigo.getVida());
     }
     
-    public boolean getAcabouBatalha() {
+    /*public boolean getAcabouBatalha() {
     	return this.acabouBatalha;
-    }
+    }*/
 
   
 }
